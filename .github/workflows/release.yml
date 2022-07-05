@@ -62,7 +62,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --locked --bin wizer --target=${{ matrix.rust_arch }}-${{ matrix.rust_abi }} --features="env_logger structopt"
+          args: --release --locked --bin wizer --target=${{ matrix.rust_arch }}-${{ matrix.rust_abi }} --features="all"
 
       - name: Strip symbols (linux)
         if: ${{ matrix.name == 'linux' }}
