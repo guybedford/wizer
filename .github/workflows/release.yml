@@ -67,22 +67,22 @@ jobs:
       - name: Strip symbols (linux)
         if: ${{ matrix.name == 'linux' }}
         run: |
-          ${{ matrix.rust_arch }}-linux-gnu-strip target/${{ matrix.rust_arch }}-${{ matrix.rust_abi }}/release/viceroy${{ matrix.extension }}
+          ${{ matrix.rust_arch }}-linux-gnu-strip target/${{ matrix.rust_arch }}-${{ matrix.rust_abi }}/release/wizer${{ matrix.extension }}
 
       - name: Strip symbols (non-linux)
         if: ${{ matrix.name != 'linux' }}
         run: |
-          strip target/${{ matrix.rust_arch }}-${{ matrix.rust_abi }}/release/viceroy${{ matrix.extension }}
+          strip target/${{ matrix.rust_arch }}-${{ matrix.rust_abi }}/release/wizer${{ matrix.extension }}
 
       - name: Package
         run: |
           cd target/${{ matrix.rust_arch }}-${{ matrix.rust_abi }}/release
-          tar czf viceroy_${{ steps.tagName.outputs.tag }}_${{ matrix.name }}-${{ matrix.arch }}.tar.gz viceroy${{ matrix.extension }}
+          tar czf wizer_${{ steps.tagName.outputs.tag }}_${{ matrix.name }}-${{ matrix.arch }}.tar.gz wizer${{ matrix.extension }}
 
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            target/${{ matrix.rust_arch }}-${{ matrix.rust_abi }}/release/viceroy_${{ steps.tagName.outputs.tag }}_${{ matrix.name }}-${{ matrix.arch }}.tar.gz
+            target/${{ matrix.rust_arch }}-${{ matrix.rust_abi }}/release/wizer_${{ steps.tagName.outputs.tag }}_${{ matrix.name }}-${{ matrix.arch }}.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
