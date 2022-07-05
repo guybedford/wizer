@@ -62,7 +62,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --all --locked --target=${{ matrix.rust_arch }}-${{ matrix.rust_abi }}
+          args: --release --locked --target=${{ matrix.rust_arch }}-${{ matrix.rust_abi }}
 
       - name: Strip symbols (linux)
         if: ${{ matrix.name == 'linux' }}
