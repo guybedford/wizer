@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# A small script used for assembling release tarballs for both the `wizer`
-# binary and the C API. This is executed with two arguments, mostly coming from
+# A small script used for assembling release tarballs for the `wizer`
+# binary. This is executed with two arguments, mostly coming from
 # the CI matrix.
 #
-# * The first argument is the name of the platform, used to name the release
-# * The second argument is the "target", if present, currently only for
+# The first argument is the name of the platform, used to name the release
+# The second argument is the "target", if present, currently only for
 #   cross-compiles
 #
 # This expects the build to already be done and will assemble release artifacts
@@ -37,15 +37,6 @@ if [ "$platform" = "x86_64-windows" ]; then
 elif [ "$platform" = "x86_64-mingw" ]; then
   cp target/x86_64-pc-windows-gnu/release/wizer.exe tmp/$bin_pkgname
   fmt=zip
-# elif [ "$platform" = "x86_64-macos" ]; then
-#   # Postprocess the macOS dylib a bit to have a more reasonable `LC_ID_DYLIB`
-#   # directive than the default one that comes out of the linker when typically
-#   # doing `cargo build`. For more info see #984
-#   install_name_tool -id "@rpath/libwizer.dylib" target/release/libwizer.dylib
-#   cp target/release/wizer tmp/$bin_pkgname
-# elif [ "$platform" = "aarch64-macos" ]; then
-#   install_name_tool -id "@rpath/libwizer.dylib" target/aarch64-apple-darwin/release/libwizer.dylib
-#   cp target/aarch64-apple-darwin/release/wizer tmp/$bin_pkgname
 elif [ "$target" = "" ]; then
   cp target/release/wizer tmp/$bin_pkgname
 else

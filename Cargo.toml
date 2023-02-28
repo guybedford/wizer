@@ -4,12 +4,13 @@ categories = ["command-line-utilities", "development-tools", "wasm"]
 description = "The WebAssembly Pre-Initializer"
 documentation = "https://docs.rs/wizer"
 edition = "2018"
+exclude = ["**.wasm"]
 homepage = "https://github.com/bytecodealliance/wizer"
 license = "Apache-2.0 WITH LLVM-exception"
 name = "wizer"
 readme = "./README.md"
 repository = "https://github.com/bytecodealliance/wizer"
-version = "1.4.0"
+version = "1.6.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -32,11 +33,11 @@ env_logger = { version = "0.8.2", optional = true }
 log = "0.4.14"
 rayon = "1.5.0"
 structopt = { version = "0.3.21", optional = true }
-wasi-cap-std-sync = "0.34.1"
+wasi-cap-std-sync = "0.35.3"
 wasm-encoder = "0.6.0"
 wasmparser = "0.78.2"
-wasmtime = "0.34.1"
-wasmtime-wasi = "0.34.1"
+wasmtime = "0.35.3"
+wasmtime-wasi = "0.35.3"
 
 # Enable this dependency to get messages with WAT disassemblies when certain
 # internal panics occur.
